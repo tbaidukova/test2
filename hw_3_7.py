@@ -10,20 +10,20 @@ def restruct_text(x):
     x = x.split()
     keys_tosort = []
     for i in x:
-        i = (i.strip(",!()'.?")).upper()
+        i = (i.strip(",!()'.?")).lower()
         keys_tosort.append(i)
     return sorted(keys_tosort)
 def create_dict(keys):
     keys_sorted=restruct_text(keys)
     dict_article = {}
     for i in keys_sorted:
-        if i not in (",","(",")","?",".","!"):
+        if i !="":
             dict_article[i]=dict_article.get(i,0)+1
     return dict_article
 
 article='''We are not what we should be!
-We are not what we  we we we need to be be. be
-be But at least we are not what we used to be
+We are not what we we we we need to be be. be
+be But at least we !!! are not what we used to be
 (Football Coach)'''
 m=create_dict(article)
-print(m)
+print(m,end='\n')
